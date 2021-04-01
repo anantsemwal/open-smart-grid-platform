@@ -19,17 +19,17 @@ public class SetRandomisationSettingsRequest implements Serializable {
   private SetRandomisationSettingsRequestData setRandomisationSettingsRequestData;
 
   public SetRandomisationSettingsRequest(
-      String deviceIdentification,
-      SetRandomisationSettingsRequestData setRandomisationSettingsRequestData) {
+      final String deviceIdentification,
+      final SetRandomisationSettingsRequestData setRandomisationSettingsRequestData) {
     this.deviceIdentification = deviceIdentification;
     this.setRandomisationSettingsRequestData = setRandomisationSettingsRequestData;
   }
 
   public String getDeviceIdentification() {
-    return deviceIdentification;
+    return this.deviceIdentification;
   }
 
   public SetRandomisationSettingsRequestData getSetRandomisationSettingsRequestData() {
-    return setRandomisationSettingsRequestData;
+    return this.setRandomisationSettingsRequestData;
   }
 }
