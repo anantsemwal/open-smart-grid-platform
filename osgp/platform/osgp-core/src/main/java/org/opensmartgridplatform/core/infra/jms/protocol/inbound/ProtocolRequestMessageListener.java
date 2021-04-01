@@ -27,9 +27,9 @@ public class ProtocolRequestMessageListener implements MessageListener {
   private static final Logger LOGGER =
       LoggerFactory.getLogger(ProtocolRequestMessageListener.class);
 
-  private DomainRequestService domainRequestService;
-  private List<DomainInfo> domainInfos;
-  private MessageProcessorMap protocolRequestMessageProcessorMap;
+  private final DomainRequestService domainRequestService;
+  private final List<DomainInfo> domainInfos;
+  private final MessageProcessorMap protocolRequestMessageProcessorMap;
 
   public ProtocolRequestMessageListener(
       final DomainRequestService domainRequestService,
@@ -75,7 +75,7 @@ public class ProtocolRequestMessageListener implements MessageListener {
   private void sendMessageToDomainAdapter(
       final RequestMessage requestMessage, final String messageType) {
 
-    String domain;
+    final String domain;
     final String domainVersion;
     if (DeviceFunction.PUSH_NOTIFICATION_ALARM.name().equals(messageType)) {
       domain = "SMART_METERING";

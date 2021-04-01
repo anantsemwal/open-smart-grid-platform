@@ -13,7 +13,7 @@ import org.opensmartgridplatform.shared.infra.jms.MessageMetadata;
 import org.opensmartgridplatform.shared.infra.jms.ResponseMessage;
 
 public interface ProtocolResponseService {
-  public void send(
+  void send(
       final ResponseMessage responseMessage,
       final String messageType,
       final ProtocolInfo protocolInfo,

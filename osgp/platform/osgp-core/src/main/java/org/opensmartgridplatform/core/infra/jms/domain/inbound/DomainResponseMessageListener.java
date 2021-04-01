@@ -26,9 +26,9 @@ public class DomainResponseMessageListener implements MessageListener {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DomainResponseMessageListener.class);
 
-  private ProtocolResponseService protocolResponseService;
+  private final ProtocolResponseService protocolResponseService;
 
-  private List<ProtocolInfo> protocolInfos;
+  private final List<ProtocolInfo> protocolInfos;
 
   public DomainResponseMessageListener(
       final ProtocolResponseService protocolResponseService,

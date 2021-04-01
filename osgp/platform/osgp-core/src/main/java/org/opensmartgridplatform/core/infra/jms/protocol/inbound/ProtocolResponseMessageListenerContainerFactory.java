@@ -35,11 +35,11 @@ public class ProtocolResponseMessageListenerContainerFactory
 
   @Autowired private DefaultProtocolJmsConfiguration defaultProtocolJmsConfiguration;
 
-  private Environment environment;
-  private List<ProtocolInfo> protocolInfos;
+  private final Environment environment;
+  private final List<ProtocolInfo> protocolInfos;
 
-  private ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
-  private MessageListenerContainerRegistry messageListenerContainerRegistry =
+  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+  private final MessageListenerContainerRegistry messageListenerContainerRegistry =
       new MessageListenerContainerRegistry();
 
   public ProtocolResponseMessageListenerContainerFactory(

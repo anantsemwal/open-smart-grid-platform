@@ -35,11 +35,11 @@ public class DomainResponseMessageListenerContainerFactory
   private final List<DomainInfo> domainInfos;
   @Autowired private ProtocolResponseService protocolResponseService;
   @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
-  private Environment environment;
-  private List<ProtocolInfo> protocolInfos;
+  private final Environment environment;
+  private final List<ProtocolInfo> protocolInfos;
 
-  private ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
-  private MessageListenerContainerRegistry messageListenerRegistry =
+  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+  private final MessageListenerContainerRegistry messageListenerRegistry =
       new MessageListenerContainerRegistry();
 
   public DomainResponseMessageListenerContainerFactory(

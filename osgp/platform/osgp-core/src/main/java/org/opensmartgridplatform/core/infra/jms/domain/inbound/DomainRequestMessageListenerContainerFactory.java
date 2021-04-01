@@ -36,9 +36,9 @@ public class DomainRequestMessageListenerContainerFactory
   @Autowired private DeviceRequestMessageService deviceRequestMessageService;
   @Autowired private ScheduledTaskRepository scheduledTaskRepository;
   @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
-  private Environment environment;
-  private ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
-  private MessageListenerContainerRegistry messageListenerContainerRegistry =
+  private final Environment environment;
+  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+  private final MessageListenerContainerRegistry messageListenerContainerRegistry =
       new MessageListenerContainerRegistry();
 
   public DomainRequestMessageListenerContainerFactory(

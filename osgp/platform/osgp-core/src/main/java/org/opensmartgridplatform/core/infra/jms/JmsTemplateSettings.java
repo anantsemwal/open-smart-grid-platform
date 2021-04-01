@@ -10,9 +10,9 @@ package org.opensmartgridplatform.core.infra.jms;
 
 public class JmsTemplateSettings {
 
-  private boolean explicitQosEnabled;
-  private long timeToLive;
-  private boolean deliveryPersistent;
+  private final boolean explicitQosEnabled;
+  private final long timeToLive;
+  private final boolean deliveryPersistent;
 
   public JmsTemplateSettings(
       final boolean explicitQosEnabled, final long timeToLive, final boolean deliveryPersistent) {

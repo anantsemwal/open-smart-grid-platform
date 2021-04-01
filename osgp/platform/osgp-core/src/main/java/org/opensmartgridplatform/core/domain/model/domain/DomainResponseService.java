@@ -12,7 +12,7 @@ import org.opensmartgridplatform.shared.infra.jms.ProtocolRequestMessage;
 import org.opensmartgridplatform.shared.infra.jms.ProtocolResponseMessage;
 
 public interface DomainResponseService {
-  public void send(ProtocolResponseMessage message);
+  void send(ProtocolResponseMessage message);
 
-  public void send(ProtocolRequestMessage message, Exception e);
+  void send(ProtocolRequestMessage message, Exception e);
 }

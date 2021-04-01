@@ -12,5 +12,5 @@ import org.opensmartgridplatform.domain.core.entities.DomainInfo;
 import org.opensmartgridplatform.shared.infra.jms.RequestMessage;
 
 public interface DomainRequestService {
-  public void send(RequestMessage message, String messageType, DomainInfo domainInfo);
+  void send(RequestMessage message, String messageType, DomainInfo domainInfo);
 }
