@@ -29,6 +29,11 @@ public class ProtocolResponseMessageListener implements MessageListener {
     this.deviceResponseMessageService = deviceResponseMessageService;
   }
 
+  private static ProtocolResponseMessage createResponseMessage(final Message message)
+      throws JMSException {
+    return (ProtocolResponseMessage) ((ObjectMessage) message).getObject();
+  }
+
   @Override
   public void onMessage(final Message message) {
     try {
@@ -57,10 +62,5 @@ public class ProtocolResponseMessageListener implements MessageListener {
     } catch (final JMSException e) {
       LOGGER.error("Exception: {}, StackTrace: {}", e.getMessage(), e.getStackTrace(), e);
     }
-  }
-
-  private static ProtocolResponseMessage createResponseMessage(final Message message)
-      throws JMSException {
-    return (ProtocolResponseMessage) ((ObjectMessage) message).getObject();
   }
 }

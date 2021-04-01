@@ -32,13 +32,10 @@ public class DomainResponseMessageListenerContainerFactory
 
   private static final Logger LOGGER =
       LoggerFactory.getLogger(DomainResponseMessageListenerContainerFactory.class);
-
-  @Autowired private ProtocolResponseService protocolResponseService;
-
-  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
-
-  private Environment environment;
   private final List<DomainInfo> domainInfos;
+  @Autowired private ProtocolResponseService protocolResponseService;
+  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
+  private Environment environment;
   private List<ProtocolInfo> protocolInfos;
 
   private ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();

@@ -28,22 +28,6 @@ public class DomainRequestMessageSender implements DomainRequestService {
 
   @Autowired private DomainRequestMessageJmsTemplateFactory domainRequestMessageJmsTemplateFactory;
 
-  @Override
-  public void send(
-      final RequestMessage message, final String messageType, final DomainInfo domainInfo) {
-    LOGGER.info(
-        "Sending domain incoming request message for device [{}] of type [{}] using domain [{}] with version [{}]",
-        message.getDeviceIdentification(),
-        messageType,
-        domainInfo.getDomain(),
-        domainInfo.getDomainVersion());
-
-    final JmsTemplate jmsTemplate =
-        this.domainRequestMessageJmsTemplateFactory.getJmsTemplate(domainInfo.getKey());
-
-    sendMessage(message, messageType, jmsTemplate);
-  }
-
   private static void sendMessage(
       final RequestMessage requestMessage,
       final String messageType,
@@ -70,5 +54,21 @@ public class DomainRequestMessageSender implements DomainRequestService {
             return objectMessage;
           }
         });
+  }
+
+  @Override
+  public void send(
+      final RequestMessage message, final String messageType, final DomainInfo domainInfo) {
+    LOGGER.info(
+        "Sending domain incoming request message for device [{}] of type [{}] using domain [{}] with version [{}]",
+        message.getDeviceIdentification(),
+        messageType,
+        domainInfo.getDomain(),
+        domainInfo.getDomainVersion());
+
+    final JmsTemplate jmsTemplate =
+        this.domainRequestMessageJmsTemplateFactory.getJmsTemplate(domainInfo.getKey());
+
+    sendMessage(message, messageType, jmsTemplate);
   }
 }

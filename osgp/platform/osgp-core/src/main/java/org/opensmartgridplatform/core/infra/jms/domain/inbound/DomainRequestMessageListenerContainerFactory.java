@@ -32,16 +32,11 @@ public class DomainRequestMessageListenerContainerFactory
 
   private static final Logger LOGGER =
       LoggerFactory.getLogger(DomainRequestMessageListenerContainerFactory.class);
-
-  @Autowired private DeviceRequestMessageService deviceRequestMessageService;
-
-  @Autowired private ScheduledTaskRepository scheduledTaskRepository;
-
-  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
-
-  private Environment environment;
   private final List<DomainInfo> domainInfos;
-
+  @Autowired private DeviceRequestMessageService deviceRequestMessageService;
+  @Autowired private ScheduledTaskRepository scheduledTaskRepository;
+  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
+  private Environment environment;
   private ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
   private MessageListenerContainerRegistry messageListenerContainerRegistry =
       new MessageListenerContainerRegistry();

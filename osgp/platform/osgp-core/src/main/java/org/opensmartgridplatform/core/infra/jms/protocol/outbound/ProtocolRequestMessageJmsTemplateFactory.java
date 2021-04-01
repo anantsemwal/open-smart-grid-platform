@@ -29,14 +29,12 @@ public class ProtocolRequestMessageJmsTemplateFactory implements InitializingBea
 
   private static final Logger LOGGER =
       LoggerFactory.getLogger(ProtocolRequestMessageJmsTemplateFactory.class);
-
-  @Autowired private DefaultProtocolJmsConfiguration defaultProtocolJmsConfiguration;
-
   private final Environment environment;
   private final List<ProtocolInfo> protocolInfos;
   private final ConnectionFactoryRegistry connectionFactoryRegistry =
       new ConnectionFactoryRegistry();
   private final Registry<JmsTemplate> jmsTemplateRegistry = new Registry<>();
+  @Autowired private DefaultProtocolJmsConfiguration defaultProtocolJmsConfiguration;
 
   public ProtocolRequestMessageJmsTemplateFactory(
       final Environment environment, final List<ProtocolInfo> protocolInfos) {

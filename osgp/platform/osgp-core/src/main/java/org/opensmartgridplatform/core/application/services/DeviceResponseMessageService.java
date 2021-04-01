@@ -52,6 +52,13 @@ public class DeviceResponseMessageService {
 
   @Autowired private int getMaxRetryCount;
 
+  private static String getIpAddress(final Device device) {
+    if (device.getIpAddress() == null && device.getGatewayDevice() != null) {
+      return device.getGatewayDevice().getIpAddress();
+    }
+    return device.getIpAddress();
+  }
+
   public void processMessage(final ProtocolResponseMessage message) {
     LOGGER.info(
         "Processing protocol response message with correlation uid [{}]",
@@ -224,13 +231,6 @@ public class DeviceResponseMessageService {
         .scheduled(message.isScheduled())
         .retryCount(message.getRetryCount() + 1)
         .build();
-  }
-
-  private static String getIpAddress(final Device device) {
-    if (device.getIpAddress() == null && device.getGatewayDevice() != null) {
-      return device.getGatewayDevice().getIpAddress();
-    }
-    return device.getIpAddress();
   }
 
   private ScheduledTask createScheduledRetryTask(final ProtocolResponseMessage message) {

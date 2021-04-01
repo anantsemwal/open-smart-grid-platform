@@ -30,32 +30,6 @@ public class DomainResponseMessageSender implements DomainResponseService {
 
   @Autowired private DomainResponseMessageJmsTemplateFactory factory;
 
-  @Override
-  public void send(final ProtocolResponseMessage protocolResponseMessage) {
-
-    final String key =
-        DomainInfo.getKey(
-            protocolResponseMessage.getDomain(), protocolResponseMessage.getDomainVersion());
-    final JmsTemplate jmsTemplate = this.factory.getJmsTemplate(key);
-
-    final ResponseMessage message = createResponseMessage(protocolResponseMessage);
-
-    send(message, protocolResponseMessage.getMessageType(), jmsTemplate);
-  }
-
-  @Override
-  public void send(final ProtocolRequestMessage protocolRequestMessage, final Exception e) {
-
-    final String key =
-        DomainInfo.getKey(
-            protocolRequestMessage.getDomain(), protocolRequestMessage.getDomainVersion());
-    final JmsTemplate jmsTemplate = this.factory.getJmsTemplate(key);
-
-    final ResponseMessage message = createResponseMessage(protocolRequestMessage, e);
-
-    send(message, protocolRequestMessage.getMessageType(), jmsTemplate);
-  }
-
   private static void send(
       final ResponseMessage message, final String messageType, final JmsTemplate jmsTemplate) {
 
@@ -117,5 +91,31 @@ public class DomainResponseMessageSender implements DomainResponseService {
     }
 
     return new TechnicalException(ComponentType.OSGP_CORE, "An unknown error occurred", e);
+  }
+
+  @Override
+  public void send(final ProtocolResponseMessage protocolResponseMessage) {
+
+    final String key =
+        DomainInfo.getKey(
+            protocolResponseMessage.getDomain(), protocolResponseMessage.getDomainVersion());
+    final JmsTemplate jmsTemplate = this.factory.getJmsTemplate(key);
+
+    final ResponseMessage message = createResponseMessage(protocolResponseMessage);
+
+    send(message, protocolResponseMessage.getMessageType(), jmsTemplate);
+  }
+
+  @Override
+  public void send(final ProtocolRequestMessage protocolRequestMessage, final Exception e) {
+
+    final String key =
+        DomainInfo.getKey(
+            protocolRequestMessage.getDomain(), protocolRequestMessage.getDomainVersion());
+    final JmsTemplate jmsTemplate = this.factory.getJmsTemplate(key);
+
+    final ResponseMessage message = createResponseMessage(protocolRequestMessage, e);
+
+    send(message, protocolRequestMessage.getMessageType(), jmsTemplate);
   }
 }

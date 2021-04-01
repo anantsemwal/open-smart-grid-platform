@@ -19,6 +19,12 @@ public class MessageListenerContainerRegistry extends Registry<DefaultMessageLis
   private static final Logger LOGGER =
       LoggerFactory.getLogger(MessageListenerContainerRegistry.class);
 
+  private static void stopAndDestroy(
+      final DefaultMessageListenerContainer messageListenerContainer) {
+    messageListenerContainer.stop();
+    messageListenerContainer.destroy();
+  }
+
   @Override
   protected void preUnregisterAll() {
     this.getValues().forEach(MessageListenerContainerRegistry::stopAndDestroy);
@@ -36,11 +42,5 @@ public class MessageListenerContainerRegistry extends Registry<DefaultMessageLis
   @Override
   public void destroy() {
     this.unregisterAll();
-  }
-
-  private static void stopAndDestroy(
-      final DefaultMessageListenerContainer messageListenerContainer) {
-    messageListenerContainer.stop();
-    messageListenerContainer.destroy();
   }
 }
