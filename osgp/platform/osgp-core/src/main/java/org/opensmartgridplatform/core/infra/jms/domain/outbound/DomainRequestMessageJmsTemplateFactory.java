@@ -30,13 +30,15 @@ public class DomainRequestMessageJmsTemplateFactory implements InitializingBean,
   private static final Logger LOGGER =
       LoggerFactory.getLogger(DomainRequestMessageJmsTemplateFactory.class);
 
-  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+  private final ConnectionFactoryRegistry connectionFactoryRegistry =
+      new ConnectionFactoryRegistry();
   private final Registry<JmsTemplate> jmsTemplateRegistry = new Registry<>();
 
-  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
-
   private final Environment environment;
+
   private final List<DomainInfo> domainInfos;
+
+  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
 
   public DomainRequestMessageJmsTemplateFactory(
       final Environment environment, final List<DomainInfo> domainInfos) {

@@ -45,8 +45,8 @@ public class DomainMessagingConfig extends AbstractConfig {
   @Value("${jms.domain.activemq.broker.client.trust.store.pwd:password}")
   private String trustKeyStorePwd;
 
-  private List<DomainInfo> domainInfos;
-  private List<ProtocolInfo> protocolInfos;
+  private final List<DomainInfo> domainInfos;
+  private final List<ProtocolInfo> protocolInfos;
 
   public DomainMessagingConfig(
       final DomainInfoRepository domainInfoRepository,

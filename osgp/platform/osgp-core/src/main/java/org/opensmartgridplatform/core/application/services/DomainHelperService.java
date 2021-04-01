@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 @Service(value = "osgpCoreDomainHelperService")
 public class DomainHelperService {
 
-  private static ComponentType COMPONENT_TYPE = ComponentType.OSGP_CORE;
+  private static final ComponentType COMPONENT_TYPE = ComponentType.OSGP_CORE;
 
   @Autowired private DeviceDomainService deviceDomainService;
 
@@ -44,7 +44,7 @@ public class DomainHelperService {
 
   public Organisation findOrganisation(final String organisationIdentification)
       throws FunctionalException {
-    Organisation organisation;
+    final Organisation organisation;
     try {
       organisation = this.organisationDomainService.searchOrganisation(organisationIdentification);
     } catch (final UnknownEntityException e) {

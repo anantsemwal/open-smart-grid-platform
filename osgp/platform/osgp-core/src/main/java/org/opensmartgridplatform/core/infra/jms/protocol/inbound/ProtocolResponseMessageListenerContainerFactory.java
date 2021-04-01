@@ -31,16 +31,19 @@ public class ProtocolResponseMessageListenerContainerFactory
   private static final Logger LOGGER =
       LoggerFactory.getLogger(ProtocolResponseMessageListenerContainerFactory.class);
 
+  private final Environment environment;
+
+  private final List<ProtocolInfo> protocolInfos;
+
+  private final ConnectionFactoryRegistry connectionFactoryRegistry =
+      new ConnectionFactoryRegistry();
+
+  private final MessageListenerContainerRegistry messageListenerContainerRegistry =
+      new MessageListenerContainerRegistry();
+
   @Autowired private DeviceResponseMessageService deviceResponseMessageService;
 
   @Autowired private DefaultProtocolJmsConfiguration defaultProtocolJmsConfiguration;
-
-  private final Environment environment;
-  private final List<ProtocolInfo> protocolInfos;
-
-  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
-  private final MessageListenerContainerRegistry messageListenerContainerRegistry =
-      new MessageListenerContainerRegistry();
 
   public ProtocolResponseMessageListenerContainerFactory(
       final Environment environment, final List<ProtocolInfo> protocolInfos) {

@@ -82,7 +82,7 @@ public class DeviceRegistrationMessageService {
   }
 
   private Device createNewDevice(final String deviceIdentification, final String deviceType) {
-    Device device;
+    final Device device;
     if (Ssld.SSLD_TYPE.equalsIgnoreCase(deviceType)
         || Ssld.PSLD_TYPE.equalsIgnoreCase(deviceType)) {
       device = new Ssld(deviceIdentification);

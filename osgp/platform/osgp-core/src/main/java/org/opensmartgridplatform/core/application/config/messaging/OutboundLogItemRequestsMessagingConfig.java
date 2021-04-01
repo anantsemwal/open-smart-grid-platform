@@ -25,7 +25,7 @@ public class OutboundLogItemRequestsMessagingConfig {
   private static final Logger LOGGER =
       LoggerFactory.getLogger(OutboundLogItemRequestsMessagingConfig.class);
 
-  private JmsConfigurationFactory jmsConfigurationFactory;
+  private final JmsConfigurationFactory jmsConfigurationFactory;
 
   public OutboundLogItemRequestsMessagingConfig(
       final Environment environment, final JmsConfiguration defaultJmsConfiguration)

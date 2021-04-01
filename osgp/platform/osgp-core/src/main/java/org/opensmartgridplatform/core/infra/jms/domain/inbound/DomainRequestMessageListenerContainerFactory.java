@@ -33,13 +33,20 @@ public class DomainRequestMessageListenerContainerFactory
   private static final Logger LOGGER =
       LoggerFactory.getLogger(DomainRequestMessageListenerContainerFactory.class);
   private final List<DomainInfo> domainInfos;
-  @Autowired private DeviceRequestMessageService deviceRequestMessageService;
-  @Autowired private ScheduledTaskRepository scheduledTaskRepository;
-  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
+
   private final Environment environment;
-  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+
+  private final ConnectionFactoryRegistry connectionFactoryRegistry =
+      new ConnectionFactoryRegistry();
+
   private final MessageListenerContainerRegistry messageListenerContainerRegistry =
       new MessageListenerContainerRegistry();
+
+  @Autowired private DeviceRequestMessageService deviceRequestMessageService;
+
+  @Autowired private ScheduledTaskRepository scheduledTaskRepository;
+
+  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
 
   public DomainRequestMessageListenerContainerFactory(
       final Environment environment, final List<DomainInfo> domainInfos) {

@@ -33,14 +33,20 @@ public class DomainResponseMessageListenerContainerFactory
   private static final Logger LOGGER =
       LoggerFactory.getLogger(DomainResponseMessageListenerContainerFactory.class);
   private final List<DomainInfo> domainInfos;
-  @Autowired private ProtocolResponseService protocolResponseService;
-  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
+
   private final Environment environment;
+
   private final List<ProtocolInfo> protocolInfos;
 
-  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+  private final ConnectionFactoryRegistry connectionFactoryRegistry =
+      new ConnectionFactoryRegistry();
+
   private final MessageListenerContainerRegistry messageListenerRegistry =
       new MessageListenerContainerRegistry();
+
+  @Autowired private ProtocolResponseService protocolResponseService;
+
+  @Autowired private DefaultDomainJmsConfiguration defaultDomainJmsConfiguration;
 
   public DomainResponseMessageListenerContainerFactory(
       final Environment environment,

@@ -33,19 +33,23 @@ public class ProtocolRequestMessageListenerContainerFactory
   private static final Logger LOGGER =
       LoggerFactory.getLogger(ProtocolRequestMessageListenerContainerFactory.class);
 
-  @Autowired private DomainRequestService domainRequestService;
-
-  @Autowired private DefaultProtocolJmsConfiguration defaultProtocolJmsConfiguration;
-
   private final Environment environment;
+
   private final List<ProtocolInfo> protocolInfos;
+
   private final List<DomainInfo> domainInfos;
 
   private final MessageProcessorMap protocolRequestMessageProcessorMap;
 
-  private final ConnectionFactoryRegistry connectionFactoryRegistry = new ConnectionFactoryRegistry();
+  private final ConnectionFactoryRegistry connectionFactoryRegistry =
+      new ConnectionFactoryRegistry();
+
   private final MessageListenerContainerRegistry messageListenerContainerRegistry =
       new MessageListenerContainerRegistry();
+
+  @Autowired private DomainRequestService domainRequestService;
+
+  @Autowired private DefaultProtocolJmsConfiguration defaultProtocolJmsConfiguration;
 
   public ProtocolRequestMessageListenerContainerFactory(
       final Environment environment,
